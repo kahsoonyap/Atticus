@@ -17,3 +17,5 @@ Anticipated Flow for Not Creation:
   - If many songs, user must select song from the results
   - If one song continue on
 3. Choose action of Update, Delete, or Play
+
+Run `python seed.py once to set up db and songs table`
