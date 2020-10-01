@@ -53,3 +53,4 @@ cursor.execute(sql % (str(uuid4()), "Song4", "R&B",  "Name4", 444,  "some path4"
 cursor.execute(sql % (str(uuid4()), "Song5", "Pop",  "Name5", 5,    "some path5", 1))
 cursor.execute(sql % (str(uuid4()), "Song6", "Rock", "Name6", 66,   "some path6", 2))
 cursor.execute(sql % (str(uuid4()), "Song7", "Rock", "Name7", 2007, "some path7", 0))
+db.commit()

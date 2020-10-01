@@ -50,7 +50,7 @@ def play():
     if request.method == 'GET':
         print "land on /play GET"
         id = request.args.get('id')
-        # song_data = db.get_song_data_by_id()
+        # song_data = db.get_song_data_by_id(id)
         song_data = "song_data"
         if song_data:
             return "render_template('play', song_data=song_data)"
@@ -121,8 +121,8 @@ def search():
         return "render_template('error')"
 
 
-def get_songs(id="", name="", genre="", artist="", length=0, path="", ranking=0):
-    # songs = db.get_songs
+def get_songs(id="", name="", genre="", artist="", length=0, path="", ranking=-1):
+    # songs = db.get_songs(id, name, genre, artist, length, path, ranking)
     songs = []
     if songs:
         return songs
