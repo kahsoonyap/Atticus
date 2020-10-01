@@ -11,7 +11,7 @@ cursor = db.cursor()
 
 genres = ['Rock', 'Pop', 'Rap', 'R&B']
 
-def get_song_data_by_id(id):
+def get_song_by_id(id):
     sql = "SELECT * FROM songs where id = '%s'" % id
     cursor.execute(sql)
     song = cursor.fetchone()
@@ -38,6 +38,16 @@ def get_songs(id, name, genre, artist, length, path, ranking):
     # print songs
     return songs
 
+def get_song_data_by_id(id):
+    # code stub
+    song = get_song_by_id(id)
+    if song:
+        print song
+        f = io.BytesIO(song.path[-2])
+        return f
+    else:
+        return
+
 def insert_song(id, name, genre, artist, length, path, ranking):
     if (ranking < 0 or ranking > 5): return # need to be 0-5
     if genre not in genres: return # not in enum
@@ -54,7 +64,7 @@ def insert_song(id, name, genre, artist, length, path, ranking):
 def update_by_id(id, name, genre, artist, length, path, ranking):
     if (ranking < 0 or ranking > 5): return # need to be 0-5
     if genre not in genres: return # not in enum
-    song = get_song_data_by_id(id)
+    song = get_song_by_id(id)
     sql = '''
         UPDATE songs
         SET
