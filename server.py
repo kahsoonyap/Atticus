@@ -3,10 +3,6 @@ from uuid import uuid4
 
 app = Flask(__name__)
 
-@app.route('/')
-def landing():
-    return "Hello Landing"
-
 @app.route('/create', methods=['GET', 'POST'])
 def create():
     if request.method == 'GET':
@@ -32,21 +28,17 @@ def create():
         return "render_template('error')"
 
 
-@app.route('/delete', methods=['GET', 'DELETE'])
+@app.route('/delete', methods=['DELETE'])
 def delete():
-    if request.method == 'GET':
-        print "land on /delete GET"
-        return "render_template('delete')"
-
-    elif request.method == 'POST':
+    if request.method == 'POST':
         print "sent request to /delete"
         id = request.args.get('id')
         # success =  db.delete_song_by_id(id)
         success = "success"
         if success:
-            return "render_template('delte_success')"
+            return "render_template('delete_success')"
         else:
-            return "render_template('error')"
+            return "render_template('could_not_delete')"
 
     else:
         print "Wrong rest method"
